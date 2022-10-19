@@ -1,7 +1,9 @@
 FROM alpine
 MAINTAINER pch18.cn
 
-RUN apk add --no-cache iptables ppp pptpd
+RUN apk add --no-cache iptables ppp pptpd \
+    && wget https://github.com/v2fly/v2ray-core/releases/download/v5.1.0/v2ray-linux-64.zip \
+    
 
 COPY etc /etc
 
