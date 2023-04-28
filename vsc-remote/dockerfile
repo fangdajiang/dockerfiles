@@ -1,0 +1,19 @@
+FROM alpine
+MAINTAINER pch18.cn
+
+RUN apk add --update --no-cache openssh \
+    && ssh-keygen -A \
+    && echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config \
+    && echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config \
+    && mkdir -p /app
+
+ENV ROOT_PASSWORD 999
+
+EXPOSE 4567
+
+WORKDIR /app
+
+CMD echo "root:${ROOT_PASSWORD}"|chpasswd && /usr/sbin/sshd && tail
+
+
+
