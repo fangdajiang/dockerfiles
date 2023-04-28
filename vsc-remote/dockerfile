@@ -9,7 +9,7 @@ RUN apk add --update --no-cache openssh \
 
 ENV ROOT_PASSWORD 999
 
-EXPOSE 4567
+EXPOSE 22
 
 WORKDIR /app
 
