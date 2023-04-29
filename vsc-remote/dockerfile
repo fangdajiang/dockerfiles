@@ -1,10 +1,12 @@
-FROM alpine
+FROM debian:latest
 MAINTAINER pch18.cn
 
-RUN apk add --update --no-cache openssh \
-    && ssh-keygen -A \
+RUN apt-get update && apt-get install -y openssh-server curl wget git \
     && echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config \
     && echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config \
+    && echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config \
+    && echo 'PermitTunnel yes' >> /etc/ssh/sshd_config \
+    && mkdir -p /run/sshd \
     && mkdir -p /app
 
 ENV ROOT_PASSWORD 999
@@ -13,7 +15,7 @@ EXPOSE 22
 
 WORKDIR /app
 
-CMD echo "root:${ROOT_PASSWORD}"|chpasswd && /usr/sbin/sshd && tail
+CMD echo "root:${ROOT_PASSWORD}"|chpasswd && /usr/sbin/sshd -D
 
 
 
