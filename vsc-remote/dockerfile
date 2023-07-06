@@ -1,13 +1,14 @@
 FROM debian:latest
 MAINTAINER pch18.cn
 
-RUN apt-get update && apt-get install -y openssh-server curl wget git \
+RUN apt-get update && apt-get install -y openssh-server curl wget git iputils-ping \
     && echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config \
     && echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config \
     && echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config \
     && echo 'PermitTunnel yes' >> /etc/ssh/sshd_config \
     && mkdir -p /run/sshd \
     && mkdir -p /app
+
 
 ENV ROOT_PASSWORD 999
 
