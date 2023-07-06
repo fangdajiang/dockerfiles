@@ -3,7 +3,7 @@ MAINTAINER pch18.cn
 
 COPY source.list /etc/apt/source.list
 
-RUN apt-get update && apt-get install -y openssh-server curl wget git iputils-ping \
+RUN apt update && apt install -y openssh-server curl wget git iputils-ping \
     && echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config \
     && echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config \
     && echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config \
