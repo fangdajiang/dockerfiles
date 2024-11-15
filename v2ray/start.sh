@@ -1,5 +1,5 @@
 URL_CADDY_CONFIG=https://raw.githubusercontent.com/pch18-docker/v2ray/master/caddy.conf
-URL_V2RAY_CONFIG=https://raw.githubusercontent.com/pch18-docker/v2ray/master/v2ray.json
+URL_V2RAY_CONFIG=https://raw.githubusercontent.com/fangdajiang/dockerfiles/refs/heads/master/v2ray/v2ray.json
 URL_MONITOR_CONFIG=https://raw.githubusercontent.com/pch18-docker/v2ray/master/monitor.sh
 
 
