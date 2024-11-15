@@ -2,6 +2,7 @@ FROM alpine
 LABEL maintainer="pch18.cn"
 
 RUN apk add --no-cache \
+    curl \
     caddy \
     v2ray \
     coreutils \
