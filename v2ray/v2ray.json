@@ -1,9 +1,4 @@
 {
-    "log": {
-        "access": "/var/log/v2ray/v2ray-access.log",
-        "error": "/var/log/v2ray/v2ray-error.log",
-        "loglevel": "info"
-    },
   "inbounds": [{
     "port": 10000,
     "listen":"0.0.0.0",
