@@ -1,68 +1,40 @@
 {
-    "stats": {},
-    "api": {
-        "tag": "api",
-        "services": [
-            "StatsService"
-        ]
+    "log": {
+        "access": "/var/log/v2ray/v2ray-access.log",
+        "error": "/var/log/v2ray/v2ray-error.log",
+        "loglevel": "info"
     },
-    "policy": {
-        "levels": {
-            "0": {
-                "statsUserUplink": true,
-                "statsUserDownlink": true
-            }
-        },
-        "system": {
-            "statsInboundUplink": true,
-            "statsInboundDownlink": true
-        }
+  "inbounds": [{
+    "port": 10000,
+    "listen":"0.0.0.0",
+    "protocol": "vmess",
+    "settings": {
+      "clients": [
+        $UUID_LIST
+      ]
     },
-    "inbounds": [
-        {
-            "port": 10000,
-            "listen": "0.0.0.0",
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                    {"id":"ff2f399b-f6c7-4e1d-9905-3366e6efea35","email":"default","alterId":64}
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "wsSettings": {
-                    "path": "/_ray"
-                }
-            }
-        },
-        {
-            "listen": "0.0.0.0",
-            "port": 10085,
-            "protocol": "dokodemo-door",
-            "settings": {
-                "address": "0.0.0.0"
-            },
-            "tag": "api"
-        }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom",
-            "settings": {}
-        }
-    ],
-    "routing": {
-        "settings": {
-            "rules": [
-                {
-                    "inboundTag": [
-                        "api"
-                    ],
-                    "outboundTag": "api",
-                    "type": "field"
-                }
-            ]
-        },
-        "strategy": "rules"
+    "streamSettings": {
+      "network": "ws",
+      "wsSettings": {
+        "path": "$PATH_RAY"
+      }
     }
+  }],
+  "outbounds": [{
+    "protocol": "freedom",
+    "settings": {}
+  },{
+    "protocol": "blackhole",
+    "settings": {},
+    "tag": "blocked"
+  }],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": ["geoip:private"],
+        "outboundTag": "blocked"
+      }
+    ]
+  }
 }
