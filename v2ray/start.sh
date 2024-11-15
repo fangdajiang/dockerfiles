@@ -28,4 +28,4 @@ sed -i "s/\$PATH_RAY/\\${PATH_RAY}/" /etc/v2ray/v2ray.json
 
 # 主进程
 env "v2ray.vmess.aead.forced" = true
-# v2ray run --config=/etc/v2ray/v2ray.json
+v2ray run --config=/etc/v2ray/v2ray.json
