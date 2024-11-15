@@ -21,10 +21,10 @@ uuid_list="${uuid_list:1}"
 sed -i "s/\$UUID_LIST/${uuid_list}/" /etc/v2ray/v2ray.json
 sed -i "s/\$PATH_RAY/\\${PATH_RAY}/" /etc/v2ray/v2ray.json
 
-# 打开流量监控
-wget -O /monitor.sh ${URL_MONITOR_CONFIG}
-chmod 777 /monitor.sh
-sh -c "watch -n 60 /monitor.sh">&1 &
+# 打开流量监控 missed v2ctl
+# wget -O /monitor.sh ${URL_MONITOR_CONFIG}
+# chmod 777 /monitor.sh
+# sh -c "watch -n 60 /monitor.sh">&1 &
 
 # 主进程
 env v2ray.vmess.aead.forced = true
