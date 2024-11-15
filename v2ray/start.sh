@@ -15,7 +15,7 @@ do
     uuid=${line#*=}
     uuid_email=${line%=*}
     email=${uuid_email#UUID_}
-    uuid_list="${uuid_list},{\"id\":\"${uuid}\",\"email\":\"${email}\",\"alterId\":${ALTER_ID}}"
+    uuid_list="${uuid_list},{\"id\":\"${uuid}\",\"security\":\"chacha20-poly1305\",\"level\":1,\"alterId\":0}"
 done
 uuid_list="${uuid_list:1}"
 sed -i "s/\$UUID_LIST/${uuid_list}/" /etc/v2ray/v2ray.json
