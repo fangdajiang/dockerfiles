@@ -21,26 +21,26 @@
     "inbounds": [
         {
             "port": 10000,
-            "listen": "127.0.0.1",
+            "listen": "0.0.0.0",
             "protocol": "vmess",
             "settings": {
                 "clients": [
-                    $UUID_LIST
+                    {"id":"ff2f399b-f6c7-4e1d-9905-3366e6efea35","email":"default","alterId":64}
                 ]
             },
             "streamSettings": {
                 "network": "ws",
                 "wsSettings": {
-                    "path": "$PATH_RAY"
+                    "path": "/_ray"
                 }
             }
         },
         {
-            "listen": "127.0.0.1",
+            "listen": "0.0.0.0",
             "port": 10085,
             "protocol": "dokodemo-door",
             "settings": {
-                "address": "127.0.0.1"
+                "address": "0.0.0.0"
             },
             "tag": "api"
         }
