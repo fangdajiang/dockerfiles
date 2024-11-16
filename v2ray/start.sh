@@ -27,5 +27,6 @@ sed -i "s/\$PATH_RAY/\\${PATH_RAY}/" /etc/v2ray/v2ray.json
 # sh -c "watch -n 60 /monitor.sh">&1 &
 
 # 主进程
-env "v2ray.vmess.aead.forced" = true
+# env "v2ray.vmess.aead.forced" = true
+env V2RAY_VMESS_AEAD_FORCED=true
 v2ray run --config=/etc/v2ray/v2ray.json
